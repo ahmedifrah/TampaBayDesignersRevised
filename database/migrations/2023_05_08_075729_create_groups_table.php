@@ -17,7 +17,6 @@ return new class extends Migration
             $table->boolean('is_credit');
             $table->string('name');
             $table->text('icon');
-            $table->timestamps();
         });
     }
 

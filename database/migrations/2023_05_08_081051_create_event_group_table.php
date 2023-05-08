@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('event_group', function (Blueprint $table) {
             $table->primary(['event_id', 'group_id']);
-            $table->unsignedBigInteger('event_id');
-            $table->unsignedBigInteger('group_id');
-            $table->timestamps();
+            $table->foreignId('event_id')->constrained();
+            $table->foreignId('group_id')->constrained();
+
         });
     }
 

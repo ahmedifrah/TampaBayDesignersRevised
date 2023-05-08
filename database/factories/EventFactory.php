@@ -18,6 +18,10 @@ class EventFactory extends Factory
     {
         return [
             //
+            'start_at' => fake()->dateTime(),
+            'name' => fake()->company(),
+            'location' => fake()->city()
+
         ];
     }
 }
