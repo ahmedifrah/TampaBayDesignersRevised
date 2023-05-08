@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_slack');
-            $table->boolean('is_credit');
+            $table->boolean('is_slack')->default(false);
+            $table->boolean('is_credit')->default(false);
             $table->string('name');
-            $table->text('icon');
+            $table->text('desc');
+            $table->string('icon');
         });
     }
 
