@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('event_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('active')->default(true);
             $table->text('question');
             $table->text('answer');
