@@ -17,6 +17,15 @@ class FaqController extends Controller
     }
     
     public function store(Request $request){
+
+        $request->validate([
+            'event_id' => 'required|max:191',
+            'question' => 'required|max:191',
+            'answer' => 'required|max:191',
+            
+        
+        ]);
+        
        $faqStore = new Faq();
        $faqStore->event_id = $request->input('event_id');
        $faqStore->question = $request->input('question');

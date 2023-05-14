@@ -18,6 +18,15 @@ class GroupController extends Controller
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'is_slack' => 'required|max:191',
+            'is_credit' => 'required|max:191',
+            'name' => 'required|max:191',
+            'desc' => 'required|max:191',
+            'icon' => 'required|max:191',
+        ]);
+
        $groupStore = new Group();
        $groupStore->is_slack = $request->input('is_slack') ?? $groupStore->is_slack;
        $groupStore->is_credit = $request->input('is_credit') ?? $groupStore->is_credit;
@@ -48,7 +57,7 @@ class GroupController extends Controller
             $groupUpdate->icon = $request->icon;
             $groupUpdate->update();
 
-            return response()->json(['message' => 'Group updated successfully'], 200);
+            return new GroupResource($groupUpdate);
         }
         else{
 

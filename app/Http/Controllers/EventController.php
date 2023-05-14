@@ -18,6 +18,13 @@ class EventController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'start_at' => 'required|max:191',
+            'name' => 'required|max:191',
+            'desc' => 'required|max:191',
+            'location' => 'required|max:191',
+        ]);
+
        $eventStore = new Event();
        $eventStore->start_at = $request->input('start_at');
        $eventStore->name = $request->input('name');
@@ -49,7 +56,7 @@ class EventController extends Controller
         }
         else{
 
-            return response()->json(['message' => 'No events found'], 404);
+            return response()->json(['message' => 'No event found'], 404);
         }
 
     }
